@@ -41,14 +41,14 @@ programs.zsh = {
   autosuggestion.enable = true;
   syntaxHighlighting.enable = true;
 
-  oh-my-zsh = {
-    enable = true;
-    plugins = [
-      "git"
-      "sudo"
-      "command-not-found"
-    ];
-  };
+  #oh-my-zsh = {
+   # enable = true;
+    #plugins = [
+     # "git"
+      #"sudo"
+      #"command-not-found"
+    #];
+  #};
 
   plugins = [
     {
@@ -80,12 +80,19 @@ programs.zsh = {
 # Enable Hyprland in Home Manager
 wayland.windowManager.hyprland = {
   enable = true;
-  # This is where you will paste someone's hyprland.conf text later:
   extraConfig = ''
+    input:kb_layout = us
+    input:touchpad:tap-to-click = true
+    input:touchpad:natural_scroll = true
+
+    exec-once = waybar
+
     bind = SUPER, Return, exec, kitty
     bind = SUPER, M, exit
   '';
 };
+
+
 
 # Essential Wayland GUI tools
 programs.waybar = let
@@ -138,8 +145,8 @@ in {
       format-icons = {
         "1" = "I"; "2" = "II"; "3" = "III"; "4" = "IV"; "5" = "V";
         "6" = "VI"; "7" = "VII"; "8" = "VIII"; "9" = "IX"; "10" = "X";
-        sort-by-number = true;
       };
+      sort-by-number = true;
       persistent-workspaces = {
         "1" = [ ]; "2" = [ ]; "3" = [ ]; "4" = [ ]; "5" = [ ];
       };

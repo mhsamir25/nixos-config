@@ -32,18 +32,17 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_AG";
-    LC_IDENTIFICATION = "en_AG";
-    LC_MEASUREMENT = "en_AG";
-    LC_MONETARY = "en_AG";
-    LC_NAME = "en_AG";
-    LC_NUMERIC = "en_AG";
-    LC_PAPER = "en_AG";
-    LC_TELEPHONE = "en_AG";
-    LC_TIME = "en_AG";
-  };
-
+ i18n.extraLocaleSettings = {
+  LC_ADDRESS = "en_US.UTF-8";
+  LC_IDENTIFICATION = "en_US.UTF-8";
+  LC_MEASUREMENT = "en_US.UTF-8";
+  LC_MONETARY = "en_US.UTF-8";
+  LC_NAME = "en_US.UTF-8";
+  LC_NUMERIC = "en_US.UTF-8";
+  LC_PAPER = "en_US.UTF-8";
+  LC_TELEPHONE = "en_US.UTF-8";
+  LC_TIME = "en_US.UTF-8";
+};
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -63,7 +62,7 @@
 
   authentication = ''
     # local socket access
-    local all all trust
+    local all all peer
 
     # TCP access from localhost
     host all all 127.0.0.1/32 scram-sha-256
