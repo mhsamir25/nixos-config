@@ -156,6 +156,10 @@ nix.gc = {
   services.power-profiles-daemon.enable = true;
 
 
+
+  #Home Manager
+  home-manager.users.ecstatic_sam25 = import ../../home/home.nix;
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
