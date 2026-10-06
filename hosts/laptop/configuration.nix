@@ -86,6 +86,9 @@
     # jack.enable = true;
   };
 
+# Enable hardware graphics rendering (Intel/AMD)
+  hardware.graphics.enable = true;
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
@@ -165,6 +168,10 @@ nix.gc = {
 
   #zsh
   programs.zsh.enable = true;
+
+  #Hyprland
+  programs.hyprland.enable = true;
+  security.polkit.enable = true; # Required for GUI apps to ask for root passwords
 
 
   # Some programs need SUID wrappers, can be configured further or are
