@@ -94,6 +94,7 @@
     isNormalUser = true;
     description = "Mahmudul Hossain Samir";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.zsh;
     packages = with pkgs; [
     #  thunderbird
     ];
@@ -159,6 +160,10 @@ nix.gc = {
 
   #Home Manager
   home-manager.users.ecstatic_sam25 = import ../../home/home.nix;
+
+  #zsh
+  programs.zsh.enable = true;
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
