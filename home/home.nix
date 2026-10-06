@@ -13,25 +13,59 @@
     fzf
   ];
 
-  # Zsh
-  programs.zsh = {
-    enable = true;
+#zsh
+programs.zsh = {
+  enable = true;
 
-    shellAliases = {
-      ll = "eza -lah";
-      cat = "bat";
-      ".." = "cd ..";
-    };
+  shellAliases = {
+    ll = "eza -lah";
+    la = "eza -a";
+    cat = "bat";
+    ".." = "cd ..";
+    "..." = "cd ../..";
+    gs = "git status";
+    ga = "git add";
+    gc = "git commit";
+    gp = "git push";
+    rebuild = "sudo nixos-rebuild switch --flake ~/nixos#nixos";
+    update = "cd ~/nixos && nix flake update && sudo nixos-rebuild switch --flake .#nixos";
   };
+
+  autosuggestion.enable = true;
+  syntaxHighlighting.enable = true;
+
+  oh-my-zsh = {
+    enable = true;
+    plugins = [
+      "git"
+      "sudo"
+      "command-not-found"
+    ];
+  };
+
+  plugins = [
+    {
+      name = "powerlevel10k";
+      src = pkgs.zsh-powerlevel10k;
+      file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+    }
+  ];
+  initExtra = ''
+  source ~/.p10k.zsh
+'';
+};
 
   # Git configuration
   programs.git = {
     enable = true;
 
     # CHANGE THESE TWO
-    userName = "Mahmudul Hossain Samir";
-    userEmail = "mahmudul1@iut-dhaka.edu";
+    settings.user.name = "Mahmudul Hossain Samir";
+    settings.user.email = "mahmudul1@iut-dhaka.edu";
   };
 
   programs.home-manager.enable = true;
+
+  #powerlevel10k
+  home.file.".p10k.zsh".source = ./p10k.zsh;
 }

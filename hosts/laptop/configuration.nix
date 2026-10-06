@@ -159,6 +159,8 @@ nix.gc = {
 
 
   #Home Manager
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
   home-manager.users.ecstatic_sam25 = import ../../home/home.nix;
 
   #zsh
