@@ -8,22 +8,12 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # --- ADD THIS BLOCK ---
-colorshell = {
-      url = "github:retrozinndev/colorshell/154a10a";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # ----------------------
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: { # <- Make sure `@inputs` is here
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        # --- ADD THIS LINE ---
-        specialArgs = { inherit inputs; };
-        # ---------------------
 
         modules = [
           ./hosts/laptop/hardware-configuration.nix

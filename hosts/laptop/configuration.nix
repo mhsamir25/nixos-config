@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, pkgs, inputs,... }:
+{ config, pkgs, ... }:
 
 {
   imports =
@@ -107,10 +107,6 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  # Allow insecure packages (pnpm is a build dep of colorshell)
-  nixpkgs.config.permittedInsecurePackages = [
-    "pnpm-10.34.0"
-  ];
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
@@ -167,7 +163,6 @@ nix.gc = {
   #Home Manager
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
-  home-manager.extraSpecialArgs = { inherit inputs; };
   home-manager.users.ecstatic_sam25 = import ../../home/home.nix;
 
   #zsh
@@ -176,12 +171,6 @@ nix.gc = {
   #Hyprland
   programs.hyprland.enable = true;
   security.polkit.enable = true; # Required for GUI apps to ask for root passwords
-
-  # XDG Desktop Portal for Hyprland
-  xdg.portal = {
-    enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
-  };
 
 
   # Some programs need SUID wrappers, can be configured further or are
